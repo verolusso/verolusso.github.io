@@ -10,11 +10,559 @@
         <title>Vero Lusso</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            body{
+                font-family: 'Poppins';
+            }
+
+            {% comment %} nav{
+                background-color: transparent !important;
+                z-index: 100;
+            }
+
+            .navbar{
+                border: none;
+            }
+
+            .icon-bar{
+                border: black !important;
+            }
+
+            .navbar-toggle{
+                border: none !important;
+            }
+
+            .navbar-brand{
+                margin-left: 5vw !important;
+                margin-top: 1vh;
+            }
+
+            .navbar-brand img{
+                max-height: 20vh;
+                max-width: 20vw;
+            } {% endcomment %}
+
+            nav{
+                background-color: transparent !important;
+                height: 80px;
+                width: 100%;
+                position: fixed;
+            }
+            label.logo{
+                color: white;
+                font-size: 35px;
+                line-height: 80px;
+                padding: 0 100px;
+                font-weight: bold;
+            }
+            .logo img{
+                max-height: 100% !important;
+                max-width: 100% !important;
+            }
+            nav ul{
+                float: right;
+                margin-right: 20px;
+            }
+            nav ul li{
+                display: inline-block;
+                line-height: 80px;
+                margin: 0 5px;
+            }
+            nav ul li a{
+                {% comment %} color: white; {% endcomment %}
+                font-size: 17px;
+                padding: 7px 13px;
+                border-radius: 3px;
+                text-transform: uppercase;
+                color: whitesmoke;
+            }
+            a.active,a:hover{
+                {% comment %} background: #1b9bff; {% endcomment %}
+                text-decoration: none !important;
+                text-decoration-line: none !important;
+                color: whitesmoke;
+                {% comment %} transition: .5s; {% endcomment %}
+            }
+            .checkbtn{
+                font-size: 30px;
+                color: white;
+                float: right;
+                line-height: 80px;
+                margin-right: 40px;
+                cursor: pointer;
+                display: none;
+            }
+            #check{
+                display: none;
+            }
+            @media (max-width: 952px){
+            label.logo{
+                font-size: 30px;
+                padding: unset;
+                padding-left: 35px;
+                color: white;
+            }
+            nav ul li a{
+                font-size: 16px;
+            }
+            }
+            @media (max-width: 858px){
+            .checkbtn{
+                display: block;
+            }
+            ul{
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #2c3e50;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+                {% comment %} transition: height, width 1s; {% endcomment %}
+            }
+            nav ul li{
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+            nav ul li a{
+                font-size: 20px;
+            }
+            a:hover,a.active{
+                background: none;
+                {% comment %} color: #0082e6; {% endcomment %}
+            }
+            #check:checked ~ ul{
+                left: 0;
+            }
+            }
+
+            .landing{
+                z-index: 0;
+            }
+            
+            #myVideo {
+                {% comment %} position: fixed; {% endcomment %}
+                right: 0;
+                bottom: 0;
+                max-width: 100%; 
+                width: 100vw;
+                min-height: 100%;
+            }
+
+            @media(max-width: 900px)
+            {
+                .intro_desktop{
+                    display: none;
+                }
+            }
+
+            @media(min-width: 901px)
+            {
+                .intro_mobile{
+                    display: none;
+                }
+            }
+
+            .about{
+                padding: 50px;
+                background-color: #2c2c2c;
+                display: flex;
+                color: whitesmoke;
+            }
+
+            .about_heading{
+                min-width: 20vw;
+            }
+
+            .about_content{
+                min-width: 80%;
+                display:flex;
+                flex-direction: column;
+            }
+
+            .about_content_upper, .about_content_lower{
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .about_content_upper p, .about_content_lower p{
+                min-width: 50%;
+            }
+
+            @media(max-width: 650px)
+            {
+                .about_heading{
+                    text-align: center;
+                    margin-bottom: 25px;
+                }
+
+                .about{
+                    flex-direction: column;
+                    padding: 25px;
+                }
+
+                .about_content_lower, .about_content_upper{
+                    flex-direction: column;
+                }
+
+                .break{
+                    display: none;
+                }
+            }
+
+            .services{
+                background-color: whitesmoke;
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+
+            .service_card{
+                background-color: white;
+                max-width: 30%;
+                padding: 15px;
+            }
+
+            .services h1, .service_card h3, .service_card p{
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .service_card img{
+                width: 40%;
+                align: center;
+            }
+
+            .services_cards{
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            @media(max-width: 650px)
+            {
+                .services_cards{
+                    flex-direction: column;
+                }
+
+                .service_card{
+                    max-width: 80%;
+                    margin-left: calc(100vw*0.1);
+                    margin-bottom: 15px;
+                }
+
+                
+            }
+
+            .csr{
+                background-color: #2c2c2c;
+                min-width: 100%;
+                min-height: 100vh;
+            }
+
+            .contact{
+                background-color: whitesmoke;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                padding: 50px;
+            }
+
+            .contact_details{
+                display: flex;
+                flex-direction: column;
+            } 
+            
+            .company_info div{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            .company_info div i{
+                padding-right: 15px;
+            }
+
+            .contact_form{
+                display: flex;
+                flex-direction: column;
+            }
+
+            .name{
+                display: flex;
+            }
+
+            .contact_details{
+                max-width: 30vw;
+            }
+
+            .contact_details h2{
+                margin-bottom: 25px;
+            }
+
+            @media(max-width: 650px)
+            {
+                .contact{
+                    flex-direction: column;
+                }
+            }
+
+            .contact_form input{
+                background-color: transparent;
+                border-top: none;
+                border-right: none;
+                border-left: none;
+                border-bottom-color: #7d858d !important;
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .contact_form input:focus{
+                border-top: none;
+                border-right: none;
+                border-left: none;
+            }
+
+            .submit{
+                border: solid !important;
+                color: white;
+                background-color: #133c2a !important;
+                border-color: transparent !important;
+                border-bottom: none !important;
+                border-bottom-color: transparent !important;
+                border-radius: 5px;
+                padding-top: 5px !important;
+                padding-bottom: 5px !important;
+            }
+
+            @media(max-width: 650px)
+            {
+                .name{
+                    flex-direction: column;
+                }
+
+                .contact_details h2{
+                    text-align: center;
+                }
+
+                .contact_details{
+                    max-width: unset;
+                }
+            }
+
+            .footer{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: whitesmoke;
+                padding-top: 100px;
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-bottom: 25px;
+                border-top-color: black;
+                {% comment %} border-top-width: 80%; {% endcomment %}
+            }
+
+            .social_media{
+                display: flex;
+                justify-content: center;
+                margin-bottom: 25px;
+            }
+
+            .social_media i{
+                height: 25px;
+                width: 25px;
+                padding: 35px;
+            }
+
+            .copyright{
+                align-self: center;
+                text-align: center;
+            }
+
+
+        </style>
     </head>
     <body>
-        <h1>Vero Lusso</h1>
+        <!--<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#"><img src="logo.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">About <!--<span class="caret"></span>--></a>
+                <!--<ul class="dropdown-menu">
+                    <li><a href="#">Page 1-1</a></li>
+                    <li><a href="#">Page 1-2</a></li>
+                    <li><a href="#">Page 1-3</a></li>
+                </ul>-
+                </li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            </div>
+        </div>
+        </nav>-->
+
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <label class="logo">Vero Lusso</label>
+            <ul>
+                <li><a class="active" href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Feedback</a></li>
+            </ul>
+        </nav>
+
+        <div class="landing">
+            <video autoplay muted loop id="myVideo" class="intro_desktop">
+                <source src="intro.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+
+            <video autoplay muted loop id="myVideo" class="intro_mobile">
+                <source src="intro_mobile.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+
+        <div class="about">
+            <div class="about_heading">
+                <h1>Our Story</h1>
+            </div>
+            <div class="about_content">
+                <div class="about_content_upper">
+                    <p>
+                    Our director, Mr.Bipin M. Sheth started his business when he was just 18 years old. 
+                    His  leadership qualities and never give up attitude has lead him through all the 
+                    hurdles and helped him emerge as a winner in true sense. With being successful in 
+                    becoming a good human being he is also a successful businessman looking out for every 
+                    opportunity.
+                    </p>
+                    <p>
+                    He has been the team leader when helping people of Uttarakhand for flood relief work.  
+                    Also, he has lead a team to help the people of Nepal in their times of distress. That is 
+                    when he founded the Architectural consultation wing in his company which served the needy 
+                    people of Nepal free of cost, headed by Jinali Sheth. Making huge contributions to the 
+                    society in cash and kind makes him more happy than making business deals. He has been a 
+                    crucial part of leading the team animal welfare. 
+                    </p>
+                </div>
+                <br class="break"><br class="break"><br class="break">
+                <div class="about_content_lower">
+                    <p>
+                    His passionate perfectionism, enthusiastic commitment, piercing dedication and vision, 
+                    is what lies behind the success of his ventures. Mr.Bipinkumar earns not only for his 
+                    family but also for the people in need. He has been awarded by the State government for 
+                    this significant contribution during Maharashtra drought.
+                    </p>
+                    <p>
+                        With being successful in becoming a good human being he is also a successful businessman 
+                        looking out for every opportunity. He believes a businessman should never restrict himself 
+                        to a particular field and therefore has started ventures in the field of architecture and 
+                        information technology.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="services">
+            <h1>What we do</h1>
+            <div class="services_cards">
+                <div class="service_card">
+                    <center><img src="importing.png"></center>
+                    <h3>Importing</h3>
+                    <p>Importing novelty fabrics from around 15 countries.</p>
+                </div>
+                <div class="service_card">
+                    <center><img src="ship.png"></center>
+                    <h3>Distribution</h3>
+                    <p>We, at Vero Lusso can be your distribution partner for PAN India. </p>
+                </div>
+                <div class="service_card">
+                    <center><img src="sourcing.png"></center>
+                    <h3>Exporting</h3>
+                    <p>Exporting various fabrics to our customers all over the world. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="csr">
+            
+        </div>
+
+        <div class="contact">
+            <div class="contact_details">
+                <h2>Contact Us</h2>
+                <div class="company_info">
+                    <div>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <p>12th Floor, 1201, Royal Square, 173, Dr Viegas St, Kalbadevi, Mumbai, Maharashtra 400002.</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <p>10 A.M. to 7 P.M.</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <p>080 4896 7567</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <p>rushabh.sheth@gmail.com</p>
+                    </div>
+                    </div>
+            </div>
+            <div class="contact_form">
+                <div class="name">
+                    <input class="first_name" type="text" placeholder="First Name">
+                    <input class="last_name" type="text" placeholder="Last Name">
+                </div>
+                <input class="phone" type="text" placeholder="Phone">
+                <input class="phone" type="email" placeholder="Email">
+                <input class="phone" type="text" placeholder="Organization">
+                <input class="submit" type="Submit" value="Let's work together!">
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="social_media">
+                <i class="fab fa-facebook-f fa-2x"></i>
+                <i class="fab fa-instagram fa-2x"></i>
+                <i class="fas fa-envelope fa-2x"></i>
+            </div>
+            <div class="copyright">
+                Deepin bleaching PVT LTD © 2021. All Rights Reserved.
+            </div>
+        </div>
         
-        <script src="" async defer></script>
+
+        <script>
+            $(document).ready(function(){
+                if(window.scrollTop>50){
+                    console.log('logging')
+                    document.getElementsbyTagName('nav').css('background-color', 'black !important')
+                }
+            }) 
+
+        </script>
     </body>
 </html>
