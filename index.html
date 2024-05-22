@@ -1,572 +1,487 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Vero Lusso</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <style>
-            body{
-                font-family: 'Poppins';
-            }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Lato", Arial, sans-serif;
+    }
 
-            video{
-                display: block;
-            }
+    .topnav {
+      display: none;
+    }
 
-            {% comment %} nav{
-                background-color: transparent !important;
-                z-index: 100;
-            }
+    input:focus {
+      border: none !important;
+    }
 
-            .navbar{
-                border: none;
-            }
+    .custom-navbar {
+      top: 0;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      height: 10vh;
+      position: sticky;
+      margin: auto;
+      background-color: white;
+      z-index: 1000;
+    }
 
-            .icon-bar{
-                border: black !important;
-            }
+    .custom-navbar a{
+      text-decoration: none;
+      color: black;
+      letter-spacing: 0.1rem;
+      font-size: 18px;
+    }
 
-            .navbar-toggle{
-                border: none !important;
-            }
+    .logo img {
+      height: 150px;
+      width: 150px;
+    }
 
-            .navbar-brand{
-                margin-left: 5vw !important;
-                margin-top: 1vh;
-            }
+    #home {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/static/landing.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100vw;
+      height: 100vh;
+      margin-bottom: 50px;
+    }
 
-            .navbar-brand img{
-                max-height: 20vh;
-                max-width: 20vw;
-            } {% endcomment %}
+    .tagline {
+      margin: auto;
+      font-size: 60px;
+      color: white;
+      text-align: center;
+      letter-spacing: 0.1rem;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      top: 40%;
+    }
 
-            nav{
-                background-color: black !important;
-                height: 80px;
-                width: 100%;
-                position: fixed;
-            }
-            label.logo{
-                color: white;
-                font-size: 35px;
-                line-height: 80px;
-                padding: 0 100px;
-                font-weight: bold;
-            }
-            .logo img{
-                max-height: 100% !important;
-                max-width: 100% !important;
-            }
-            nav ul{
-                float: right;
-                margin-right: 20px;
-            }
-            nav ul li{
-                display: inline-block;
-                line-height: 80px;
-                margin: 0 5px;
-            }
-            nav ul li a{
-                {% comment %} color: white; {% endcomment %}
-                font-size: 17px;
-                padding: 7px 13px;
-                border-radius: 3px;
-                text-transform: uppercase;
-                color: whitesmoke;
-            }
-            a.active,a:hover{
-                {% comment %} background: #1b9bff; {% endcomment %}
-                text-decoration: none !important;
-                text-decoration-line: none !important;
-                color: whitesmoke;
-                {% comment %} transition: .5s; {% endcomment %}
-            }
-            .checkbtn{
-                font-size: 30px;
-                color: white;
-                float: right;
-                line-height: 80px;
-                margin-right: 40px;
-                cursor: pointer;
-                display: none;
-            }
-            #check{
-                display: none;
-            }
-            @media (max-width: 952px){
-            label.logo{
-                font-size: 30px;
-                padding: unset;
-                padding-left: 35px;
-                color: white;
-            }
-            nav ul li a{
-                font-size: 16px;
-            }
-            }
-            @media (max-width: 858px){
-            .checkbtn{
-                display: block;
-            }
-            ul{
-                position: fixed;
-                width: 100%;
-                height: 100vh;
-                background: #2c3e50;
-                top: 80px;
-                left: -100%;
-                text-align: center;
-                transition: all .5s;
-                {% comment %} transition: height, width 1s; {% endcomment %}
-            }
-            nav ul li{
-                display: block;
-                margin: 50px 0;
-                line-height: 30px;
-            }
-            nav ul li a{
-                font-size: 20px;
-            }
-            a:hover,a.active{
-                background: none;
-                {% comment %} color: #0082e6; {% endcomment %}
-            }
-            #check:checked ~ ul{
-                left: 0;
-            }
-            }
+    .underline {
+      position: relative;
+      top: 42% !important;
+      width: 52vw;
+      color: white;
+      margin: auto;
+      height: 10px;
+    }
 
-            .landing{
-                z-index: 0;
-            }
-            
-            #myVideo {
-                {% comment %} position: fixed; {% endcomment %}
-                right: 0;
-                bottom: 0;
-                max-width: 100%; 
-                width: 100vw;
-                min-height: 100%;
-            }
+    .get-in-touch {
+      text-decoration: none;
+      position: relative;
+      top: 50%;
+      background-color: rgb(55, 96, 50);
+      padding: 15px;
+      color: white;
+      border: none;
+      width: 10vw;
+      left: 45%;
+    }
 
-            @media(max-width: 900px)
-            {
-                .intro_desktop{
-                    display: none;
-                }
-            }
+    #categories {
+      display: flex; 
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 50px;
+    }
 
-            @media(min-width: 901px)
-            {
-                .intro_mobile{
-                    display: none;
-                }
-            }
+    .category {
+      height: 70vh;
+      width: 32%;
+      margin-bottom: 25px;
+    }
 
-            .about{
-                padding: 50px;
-                background-color: #2c2c2c;
-                display: flex;
-                color: whitesmoke;
-            }
+    .category p {
+      color: white;
+      text-align: center;
+      font-size: 36px;
+      display: flex;
+      justify-content: center;
+      height: inherit;
+      align-items: center;
+      font-weight: bolder;
+    }
 
-            .about_heading{
-                min-width: 20vw;
-            }
+    .category0 {
+      background-image: url('/static/emroidered.jpg');
+      background-position: center 40%;
+    }
 
-            .about_content{
-                min-width: 80%;
-                display:flex;
-                flex-direction: column;
-            }
+    .category1 {
+      background-image: url('/static/jacquard.jpeg');
+      background-position: center 40%;
+    }
 
-            .about_content_upper, .about_content_lower{
-                display: flex;
-                justify-content: space-around;
-            }
+    .category2 {
+      background-image: url('/static/whiteshirting.jpeg');
+      background-position: center 40%;
+    }
 
-            .about_content_upper p, .about_content_lower p{
-                min-width: 50%;
-            }
+    .category3 {
+      background-image: url('/static/jetblack.jpeg');
+      background-position: center 40%;
+    }
 
-            @media(max-width: 650px)
-            {
-                .about_heading{
-                    text-align: center;
-                    margin-bottom: 25px;
-                }
+    .category4 {
+      background-image: url('/static/suiting.jpeg');
+      background-position: center 40%;
+    }
 
-                .about{
-                    flex-direction: column;
-                    padding: 25px;
-                }
+    .category5 {
+      background-image: url('/static/ethnic.jpeg');
+      background-position: center 40%;
+    }
 
-                .about_content_lower, .about_content_upper{
-                    flex-direction: column;
-                }
+    #gallery {
+      width: 80%;
+      margin: auto;
+      margin-bottom: 50px;
+    }
 
-                .break{
-                    display: none;
-                }
-            }
+    .gallery-heading {
+      text-transform: uppercase;
+      font-size: 24px;
+    }
 
-            .services{
-                background-color: whitesmoke;
-                padding-top: 100px;
-                padding-bottom: 100px;
-            }
+    .gallery-underline {
+      color:   rgb(226, 226, 226);;
+      width: 100%;
+      margin-top: 20px;
+    }
 
-            .service_card{
-                background-color: white;
-                max-width: 30%;
-                padding: 15px;
-            }
+    #carouselExampleIndicators {
+      height: 80vh;
+    }
 
-            .services h1, .service_card h3, .service_card p{
-                text-align: center;
-                margin-bottom: 30px;
-            }
+    .carousel-inner {
+      height: 80vh;
+    }
 
-            .service_card img{
-                width: 40%;
-                align: center;
-            }
+    #contact {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 80vw;
+      margin: auto;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
 
-            .services_cards{
-                display: flex;
-                justify-content: space-evenly;
-            }
+    #contact form {
+      flex: 1;
+      padding-right: 10px;
+    }
 
-            @media(max-width: 650px)
-            {
-                .services_cards{
-                    flex-direction: column;
-                }
+    #contact form div {
+      padding-left: 0px !important;
+    }
+    #contact div {
+      flex: 1;
+      padding-left: 10px;
+    }
 
-                .service_card{
-                    max-width: 80%;
-                    margin-left: calc(100vw*0.1);
-                    margin-bottom: 15px;
-                }
+    .submit-button {
+      width: 100%;
+      background-color: rgb(55, 96, 50) !important;
+      border: none !important;
+      height: 50px;
+      font-size: 18px !important;
+    }
 
-                
-            }
+    footer {
+      width: 100%;
+      margin: auto;
+    }
 
-            .csr{
-                background-color: #2c2c2c;
-                min-width: 100%;
-                min-height: 100vh;
-            }
+    footer hr {
+      margin: auto;
+      width: 80%;
+      color: black;
+      margin-bottom: 25px;
+    }
 
-            .contact{
-                background-color: whitesmoke;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
-                padding: 50px;
-            }
+    footer p {
+      width: inherit;
+      text-align: center;
+      margin: auto;
+      color: grey;
+      margin-bottom: 25px;
+    }
 
-            .contact_details{
-                display: flex;
-                flex-direction: column;
-            } 
-            
-            .company_info div{
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-            }
+    @media(max-width: 750px) {
+      .custom-navbar {
+        display: none;
+      }
 
-            .company_info div i{
-                padding-right: 15px;
-            }
+      .mobile-container {
+        max-width: 480px;
+        margin: auto;
+        background-color: white;
+        height: 500px;
+        color: white;
+        border-radius: 10px;
+      }
+      
+      .topnav {
+        display: block;
+        overflow: hidden;
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      .topnav #myLinks {
+        display: none;
+      }
+      
+      .topnav a {
+        color: black;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+      }
 
-            .contact_form{
-                display: flex;
-                flex-direction: column;
-            }
+      .topnav a img {
+        height: 50px;
+        width: 50px;
+      }
+      
+      .topnav a.icon {
+        color: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      
+      .active {
+        background-color: white;
+        color: white;
+      }
+      
 
-            .name{
-                display: flex;
-            }
+      #home {
+        background-size: 100vw auto;
+        text-align: center;
+      }
 
-            .contact_details{
-                max-width: 30vw;
-            }
+      .tagline {
+        font-size: 12px;
+        top: 40%;
+      }
 
-            .contact_details h2{
-                margin-bottom: 25px;
-            }
+      .underline {
+        top: 43% !important;
+      }
 
-            @media(max-width: 650px)
-            {
-                .contact{
-                    flex-direction: column;
-                }
-            }
+      .get-in-touch {
+        top: 50%;
+        display: inline;
+        left: unset;
+        margin: auto;
+        padding: 5px;
+        text-align: center;
+      }
 
-            .contact_form input{
-                background-color: transparent;
-                border-top: none;
-                border-right: none;
-                border-left: none;
-                border-bottom-color: #7d858d !important;
-                padding: 20px;
-                margin: 10px;
-            }
+      #categories {
+        flex-direction: column;
+        width: unset;
+        margin: unset;
+      }
 
-            .contact_form input:focus{
-                border-top: none;
-                border-right: none;
-                border-left: none;
-            }
+      #categories div {
+        width: 90vw;
+        height: 200px;
+      }
 
-            .submit{
-                border: solid !important;
-                color: white;
-                background-color: #133c2a !important;
-                border-color: transparent !important;
-                border-bottom: none !important;
-                border-bottom-color: transparent !important;
-                border-radius: 5px;
-                padding-top: 5px !important;
-                padding-bottom: 5px !important;
-            }
+      #contact {
+        flex-direction: column;
+      }
 
-            @media(max-width: 650px)
-            {
-                .name{
-                    flex-direction: column;
-                }
+      footer p{
+        width: 80%;
+        font-size: 14px;
+      }
 
-                .contact_details h2{
-                    text-align: center;
-                }
+      #contact form {
+        margin: auto;
+      }
 
-                .contact_details{
-                    max-width: unset;
-                }
-            }
+      .contact-details {
+        text-align: center;
+        margin-top: 35px;
+      }
 
-            .footer{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                background-color: whitesmoke;
-                padding-top: 100px;
-                padding-left: 50px;
-                padding-right: 50px;
-                padding-bottom: 25px;
-                border-top-color: black;
-                {% comment %} border-top-width: 80%; {% endcomment %}
-            }
+      #carouselExampleIndicators {
+        height: unset;
+      }
 
-            .social_media{
-                display: flex;
-                justify-content: center;
-                margin-bottom: 25px;
-            }
+      .carousel-inner {
+        height: unset;
+      }
 
-            .social_media i{
-                height: 25px;
-                width: 25px;
-                padding: 35px;
-            }
+      #contact form {
+        padding-right: 0px;
+        width: 100%;
+      }
 
-            .copyright{
-                align-self: center;
-                text-align: center;
-            }
+      #home {
+        height: 50vh;
+        background-size: cover;
+        background-position: right center;
+      }
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="custom-navbar">
+      <a href="#home" class="home">Home</a>
+      <a href="#categories" class="categories">Categories</a>
+      <a href="#home" class="logo"><img src="/static/logo.png" alt=""></a>
+      <a href="#gallery" class="gallery">Gallery</a>
+      <a href="#contact" class="contact">Contact</a>
+  </div>
 
+  <div class="topnav">
+    <a href="#home" class="active"><img src="/static/logo.png" alt=""></a>
+    <div id="myLinks">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <!-- <nav class="navbar fixed-top bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Fixed top</a>
+    </div>
+  </nav> -->
 
-        </style>
-    </head>
-    <body>
-        <!--<nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                        
-            </button>
-            <a class="navbar-brand" href="#"><img src="logo.png"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">About <!--<span class="caret"></span>--></a>
-                <!--<ul class="dropdown-menu">
-                    <li><a href="#">Page 1-1</a></li>
-                    <li><a href="#">Page 1-2</a></li>
-                    <li><a href="#">Page 1-3</a></li>
-                </ul>-
-                </li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            </div>
+  <div id="home" class="home">
+    <div class="tagline">BE THE INFLUENCER YOU <br> ALWAYS WERE</div>
+    <hr class="underline">
+    <a class="get-in-touch" href="#contact">Get In Touch!</a>
+  </div>
+
+  <div id="categories">
+    <div class="category category0">
+      <p>EMBROIDERED FABRICS</p>
+    </div>
+    <div class="category category1">
+      <p>JACQUARD FABRICS</p>
+    </div>
+    <div class="category category2">
+      <p>IMPORTED WHITE SHIRTING FABRICS</p>
+    </div>
+    <div class="category category3">
+      <p>JAPANESE JET BLACK FABRICS</p>
+    </div>
+    <div class="category category4">
+      <p>HIGH TWIST SUITING FABRICS</p>
+    </div>
+    <div class="category category5">
+      <p>ALL ETHNIC FABRICS</p>
+    </div>
+  </div>
+
+  <div id="gallery">
+    <div class="gallery-heading">From Fabric to Fashion: Explore Our Bespoke Clothing Gallery</div>
+    <hr class="gallery-underline">
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/static/desktop1.JPG" class="d-block w-100" alt="...">
         </div>
-        </nav>-->
-
-        <nav>
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-                <i class="fas fa-bars"></i>
-            </label>
-            <label class="logo">Vero Lusso</label>
-            <ul>
-                <li><a class="active" href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Feedback</a></li>
-            </ul>
-        </nav>
-
-        <div class="landing">
-            <video autoplay muted loop id="myVideo" class="intro_desktop">
-                <source src="intro.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-
-            <video autoplay muted loop id="myVideo" class="intro_mobile">
-                <source src="intro_mobile.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
+        <div class="carousel-item">
+          <img src="/static/desktop2.JPG" class="d-block w-100" alt="...">
         </div>
-
-        <div class="about">
-            <div class="about_heading">
-                <h1>Our Story</h1>
-            </div>
-            <div class="about_content">
-                <div class="about_content_upper">
-                    <p>
-                    Our director, Mr.Bipin M. Sheth started his business when he was just 18 years old. 
-                    His  leadership qualities and never give up attitude has lead him through all the 
-                    hurdles and helped him emerge as a winner in true sense. With being successful in 
-                    becoming a good human being he is also a successful businessman looking out for every 
-                    opportunity.
-                    </p>
-                    <p>
-                    He has been the team leader when helping people of Uttarakhand for flood relief work.  
-                    Also, he has lead a team to help the people of Nepal in their times of distress. That is 
-                    when he founded the Architectural consultation wing in his company which served the needy 
-                    people of Nepal free of cost, headed by Jinali Sheth. Making huge contributions to the 
-                    society in cash and kind makes him more happy than making business deals. He has been a 
-                    crucial part of leading the team animal welfare. 
-                    </p>
-                </div>
-                <br class="break"><br class="break"><br class="break">
-                <div class="about_content_lower">
-                    <p>
-                    His passionate perfectionism, enthusiastic commitment, piercing dedication and vision, 
-                    is what lies behind the success of his ventures. Mr.Bipinkumar earns not only for his 
-                    family but also for the people in need. He has been awarded by the State government for 
-                    this significant contribution during Maharashtra drought.
-                    </p>
-                    <p>
-                        With being successful in becoming a good human being he is also a successful businessman 
-                        looking out for every opportunity. He believes a businessman should never restrict himself 
-                        to a particular field and therefore has started ventures in the field of architecture and 
-                        information technology.
-                    </p>
-                </div>
-            </div>
+        <div class="carousel-item">
+          <img src="/static/desktop3.JPG" class="d-block w-100" alt="...">
         </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
 
-        <div class="services">
-            <h1>What we do</h1>
-            <div class="services_cards">
-                <div class="service_card">
-                    <center><img src="importing.png"></center>
-                    <h3>Importing</h3>
-                    <p>Importing novelty fabrics from around 15 countries.</p>
-                </div>
-                <div class="service_card">
-                    <center><img src="ship.png"></center>
-                    <h3>Distribution</h3>
-                    <p>We, at Vero Lusso can be your distribution partner for PAN India. </p>
-                </div>
-                <div class="service_card">
-                    <center><img src="sourcing.png"></center>
-                    <h3>Exporting</h3>
-                    <p>Exporting various fabrics to our customers all over the world. </p>
-                </div>
-            </div>
-        </div>
+  <div id="contact">
+    <form>
+      <div class="mb-3">
+        <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" required>
+        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+      </div>
+      <div class="mb-3">
+        <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" required>
+      </div>
+      <div class="mb-3">
+        <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Phone" required>
+      </div>
+      <div class="mb-3">
+        <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+        <textarea type="text" class="form-control" id="exampleInputPassword1" placeholder="Other notes" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary submit-button">Submit</button>
+    </form>
+    <div class="contact-details">
+      <h4>Better yet, see us in person!</h4>
+      <h4>Vero Lusso</h4>
+      <p>12th floor, Royal Square, 173. Dr Viegas Street, Marine Lines East, Chira Bazaar, Kalbadevi, Mumbai- 400002, Maharashtra , India.</p>
+      <p>Phone: +912249707289 <br>
+        Email: deepin9@gmail.com</p>
+    </div>
+  </div>
 
-        <div class="csr">
-            
-        </div>
+  <footer>
+    <hr class="footer-line">
+    <p>Copyright © 2024 Vero Lusso - All Rights Reserved.</p>
+  </footer>
 
-        <div class="contact">
-            <div class="contact_details">
-                <h2>Contact Us</h2>
-                <div class="company_info">
-                    <div>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <p>12th Floor, 1201, Royal Square, 173, Dr Viegas St, Kalbadevi, Mumbai, Maharashtra 400002.</p>
-                    </div>
-                    <div>
-                        <i class="fas fa-clock"></i>
-                        <p>10 A.M. to 7 P.M.</p>
-                    </div>
-                    <div>
-                        <i class="fas fa-phone-alt"></i>
-                        <p>080 4896 7567</p>
-                    </div>
-                    <div>
-                        <i class="fas fa-envelope"></i>
-                        <p>rushabh.sheth@gmail.com</p>
-                    </div>
-                    </div>
-            </div>
-            <div class="contact_form">
-                <div class="name">
-                    <input class="first_name" type="text" placeholder="First Name">
-                    <input class="last_name" type="text" placeholder="Last Name">
-                </div>
-                <input class="phone" type="text" placeholder="Phone">
-                <input class="phone" type="email" placeholder="Email">
-                <input class="phone" type="text" placeholder="Organization">
-                <input class="submit" type="Submit" value="Let's work together!">
-            </div>
-        </div>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+    </script>
+    
 
-        <div class="footer">
-            <div class="social_media">
-                <i class="fab fa-facebook-f fa-2x"></i>
-                <i class="fab fa-instagram fa-2x"></i>
-                <i class="fas fa-envelope fa-2x"></i>
-            </div>
-            <div class="copyright">
-                Deepin bleaching PVT LTD © 2021. All Rights Reserved.
-            </div>
-        </div>
-        
-
-        <script>
-            $(document).ready(function(){
-                if(window.scrollTop>50){
-                    console.log('logging')
-                    document.getElementsbyTagName('nav').css('background-color', 'black !important')
-                }
-            }) 
-
-        </script>
-    </body>
+  <!-- </div> -->
+</body>
 </html>
